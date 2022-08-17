@@ -4,7 +4,9 @@ export interface FetchPostInterface {
   description: string;
   feestructure: string;
   feepercentage?: number;
+  settlementAmount?: number;
   feeamount?: number;
+  amountPaid?: number;
   state: "Started" | "Paid";
   creationdate: Date;
 }
@@ -15,7 +17,9 @@ export interface PostInterface {
   description: string;
   feeStructure: string;
   feePercentage?: number;
+  settlementAmount?: number;
   feeAmount?: number;
+  amountPaid?: number;
   state: "Started" | "Paid";
   creationDate: Date;
 }

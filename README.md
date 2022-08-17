@@ -10,9 +10,9 @@ Story 1 Tasks:
 - Map fetched posts to Post componenet in PostList Component: y
 - create PostForm: y
 - test locally: y 
-- lint and prettier checks: 
-- push to development: 
-- test remote: 
+- lint and prettier checks: y
+- push to development: y
+- test remote: y
 
 
 

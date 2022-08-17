@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { baseUrl } from "../utils/baseUrl";
 import { CreatePostInterface } from "../Interfaces";
 
-export function PostForm(): JSX.Element {
+interface PostFormProps {
+  triggerReload: (arg: boolean) => void;
+  reload: boolean;
+}
+
+export function PostForm(props: PostFormProps): JSX.Element {
   const [formData, setFormData] = useState<CreatePostInterface>({
     title: "",
     description: "",
@@ -29,6 +34,7 @@ export function PostForm(): JSX.Element {
       description: "",
       state: "Started",
     });
+    props.triggerReload(!props.reload);
   }
 
   return (

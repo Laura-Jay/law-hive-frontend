@@ -1,22 +1,12 @@
-import Post from "./Post";
-import { baseUrl } from "../utils/baseUrl";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { PostInterface } from "../Interfaces";
+import Post from "./Post";
 
-function PostList(): JSX.Element {
-  const [posts, setPosts] = useState<PostInterface[]>([]);
+interface PostListProps {
+  posts: PostInterface[];
+}
 
-  useEffect(() => {
-    const url = baseUrl + "/posts";
-    async function fetchPosts() {
-      const response = await axios.get(url);
-      setPosts(response.data);
-    }
-    fetchPosts();
-  }, []);
-
-  const postArray: JSX.Element[] = posts.map((post) => (
+function PostList(props: PostListProps): JSX.Element {
+  const postArray: JSX.Element[] = props.posts.map((post) => (
     <Post
       key={post.id}
       id={post.id}

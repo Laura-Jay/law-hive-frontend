@@ -32,7 +32,7 @@ Story 3 Tasks:
 - Cancel Button should close form and empty all form fields, conditionally render buttons toggleButtons: y
 - OnSubmit update state to Paid: y
 - add amountPaid and settlementAmount to PostInterface and FetchPostInterface as optional paramenters: y
-- Jest Test for amountPaid: 
+- Jest Test for amountPaid: y
 - trigger re-render on submission:
 - test locally: 
 

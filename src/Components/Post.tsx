@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { PostInterface } from "../Interfaces";
+import { baseUrl } from "../utils/baseUrl";
+import axios from "axios"
+import feePaid from "../utils/feePaid";
 
 interface PaymentFormInterface {
   settlementAmount?: string | number;
@@ -51,23 +54,32 @@ function Post(props: PostInterface): JSX.Element {
     });
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (props.feeStructure === "fixedFee") {
       setPaymentFormData({
-        amountPaid: feeData.amountPaid,
+        settlementAmount: 0,
+        amountPaid: parseInt(feeData.amountPaid),
         state: "Paid",
       });
     } else if (feeData.settlementAmount && props.feePercentage) {
-      const fee = parseInt(feeData.settlementAmount);
-      const feePaid = fee * props.feePercentage;
+      const feeTotal = feePaid(feeData.settlementAmount, props.feePercentage)
       setPaymentFormData({
-        settlementAmount: feeData.settlementAmount,
-        amountPaid: feePaid,
+        settlementAmount: parseInt(feeData.settlementAmount),
+        amountPaid: feeTotal,
         state: "Paid",
       });
     }
-    console.log(paymentFormData);
+    console.log(paymentFormData)
+    await axios.put(baseUrl + `/posts/${props.id}`, paymentFormData);
+    setFeeData({
+      amountPaid: "",
+      settlementAmount: "",
+    });
+    setPaymentFormData({
+      amountPaid: 0,
+      state: props.state,
+    });
   }
 
   return (
@@ -108,7 +120,7 @@ function Post(props: PostInterface): JSX.Element {
                       className="form--input"
                       type="text"
                       name="settlementAmount"
-                      value={feeData.amountPaid}
+                      value={feeData.settlementAmount}
                       placeholder="Example: 300"
                       onChange={(e) => handleFeeAmountChange(e)}
                     />
@@ -122,8 +134,8 @@ function Post(props: PostInterface): JSX.Element {
                     <input
                       className="form--input"
                       type="text"
-                      name="settlementAmount"
-                      value={feeData.settlementAmount}
+                      name="amountPaid"
+                      value={feeData.amountPaid}
                       placeholder="Example: 300"
                       onChange={(e) => handleFeeAmountChange(e)}
                     />

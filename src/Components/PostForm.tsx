@@ -134,7 +134,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
                   onChange={(e) => handleFeeAmountChange(e)}
                 />
               </label>
-            
             </div>
           )}
           {feeType === "fixedFee" && (
@@ -151,7 +150,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
                   onChange={(e) => handleFeeAmountChange(e)}
                 />
               </label>
-  
             </div>
           )}
 

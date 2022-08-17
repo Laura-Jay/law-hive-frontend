@@ -9,9 +9,14 @@ interface PostFormProps {
 }
 
 export function PostForm(props: PostFormProps): JSX.Element {
+  const [feeType, setFeeType] = useState("noWinNoFee");
+  const [feeData, setFeeData] = useState("");
   const [formData, setFormData] = useState<CreatePostInterface>({
     title: "",
     description: "",
+    feeStructure: "noWinNoFee",
+    feePercentage: "",
+    feeAmount: "",
     state: "Started",
   });
 
@@ -26,15 +31,52 @@ export function PostForm(props: PostFormProps): JSX.Element {
     });
   }
 
+  function handleFeeTypeChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setFeeType(event.target.value);
+    setFeeData("");
+    setFormData((previous) => {
+      return { ...previous, feeStructure: event.target.value };
+    });
+  }
+
+  function handleFeeAmountChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setFeeData(event.target.value);
+    if (feeType === "noWinNoFee") {
+      const fee = parseInt(event.target.value) / 100;
+      setFormData((previous) => {
+        return { ...previous, feePercentage: fee, feeAmount: 0 };
+      });
+    } else if (feeType === "fixedFee") {
+      const fee = parseInt(event.target.value);
+      setFormData((previous) => {
+        return { ...previous, feeAmount: fee, feePercentage: 0 };
+      });
+    }
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await axios.post(baseUrl + "/posts", formData);
-    setFormData({
-      title: "",
-      description: "",
-      state: "Started",
-    });
-    props.triggerReload(!props.reload);
+    if (
+      (formData.feeStructure && formData.feePercentage) ||
+      (formData.feeStructure && formData.feeAmount)
+    ) {
+      console.log(formData)
+      await axios.post(baseUrl + "/posts", formData);
+      setFormData({
+        title: "",
+        description: "",
+        feeStructure: "noWinNoFee",
+        feePercentage: "",
+        feeAmount: "",
+        state: "Started",
+      });
+      setFeeData("");
+      props.triggerReload(!props.reload);
+    } else {
+      alert(
+        "Please ensure you have selected a fee structure and provided costing information."
+      );
+    }
   }
 
   return (
@@ -69,6 +111,53 @@ export function PostForm(props: PostFormProps): JSX.Element {
             />
           </label>
           <br />
+
+          <label>
+            Fee Structure:
+            <select
+              name="feeStructure"
+              value={formData.feeStructure}
+              onChange={(e) => handleFeeTypeChange(e)}
+            >
+              <option value="noWinNoFee">No Win No Fee</option>
+              <option value="fixedFee">Fixed Fee</option>
+            </select>
+          </label>
+          <br />
+
+          {feeType === "noWinNoFee" && (
+            <div>
+              <label>
+                Fee Percentage (%):
+                <input
+                  className="form--input"
+                  type="text"
+                  name="feePercentage"
+                  value={feeData}
+                  placeholder="Example: 30%"
+                  onChange={(e) => handleFeeAmountChange(e)}
+                />
+              </label>
+              <br />
+            </div>
+          ) }
+          { feeType === "fixedFee" && (
+            <div>
+              <label>
+                Fee Amount (£):
+                <input
+                  className="form--input"
+                  type="text"
+                  name="feeAmount"
+                  value={feeData}
+                  placeholder="Example: 300"
+                  required
+                  onChange={(e) => handleFeeAmountChange(e)}
+                />
+              </label>
+              <br />
+            </div>
+          )}
 
           <input className="form--submit" type="submit" value="Submit" />
         </form>

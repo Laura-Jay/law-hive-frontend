@@ -96,13 +96,11 @@ export function PostForm(props: PostFormProps): JSX.Element {
               onChange={(e) => handleFormChange(e)}
             />
           </label>
-          <br />
 
           <label>
             Description:
-            <input
+            <textarea
               className="form--textarea"
-              type="text"
               name="description"
               value={formData.description}
               placeholder="Enter a description to help clients understand the service you are providing"
@@ -110,7 +108,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
               onChange={(e) => handleFormChange(e)}
             />
           </label>
-          <br />
 
           <label>
             Fee Structure:
@@ -123,7 +120,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
               <option value="fixedFee">Fixed Fee</option>
             </select>
           </label>
-          <br />
 
           {feeType === "noWinNoFee" && (
             <div>
@@ -138,7 +134,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
                   onChange={(e) => handleFeeAmountChange(e)}
                 />
               </label>
-              <br />
             </div>
           )}
           {feeType === "fixedFee" && (
@@ -155,7 +150,6 @@ export function PostForm(props: PostFormProps): JSX.Element {
                   onChange={(e) => handleFeeAmountChange(e)}
                 />
               </label>
-              <br />
             </div>
           )}
 

@@ -40,7 +40,7 @@ Story 3 Tasks:
 - test passing locally: n 
 
 Added CSS: 
-Additional time: 30mins
+Additional time: 50mins
 
 Trade Offs: 
 

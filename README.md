@@ -1,5 +1,8 @@
 ## Law App FrontEnd 
 
+Backend Link: https://github.com/Laura-Jay/law-hive-backend
+Deployed Site Link: https://comforting-rolypoly-878abd.netlify.app/
+
 Run yarn to install dependencies
 
 Story 1 Tasks: 

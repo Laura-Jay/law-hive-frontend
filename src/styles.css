@@ -1,0 +1,189 @@
+:root {
+  --c-text-primary: #282a32;
+  --c-text-secondary: #686b87;
+  --c-text-action: #404089;
+  --c-accent-primary: #434ce8;
+  --c-border-primary: #eff1f6;
+  --c-background-primary: #ffffff;
+  --c-background-secondary: #fdfcff;
+  --c-background-tertiary: #ecf3fe;
+  --c-background-quaternary: #e9ecf4;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: "Be Vietnam Pro", sans-serif;
+  background-color: var(--c-background-secondary);
+  color: var(--c-text-primary);
+  justify-content: center;
+}
+
+.responsive-wrapper {
+  width: 65%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20vh;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
+  height: 40px;
+  border-radius: 8px;
+  line-height: 1;
+  border: 2px solid var(--c-border-primary);
+  color: var(--c-text-action);
+  font-size: 0.875rem;
+  transition: 0.15s ease;
+  background-color: var(--c-background-primary);
+  cursor: pointer;
+}
+
+.button-add {
+margin-bottom: 5vh;
+margin-top:5vh;
+width: 60%;
+}
+
+button:focus {
+  border-color: var(--c-accent-primary);
+  color: var(--c-accent-primary);
+}
+
+button:hover {
+  border-color: var(--c-accent-primary);
+  color: var(--c-accent-primary);
+}
+
+.button-bar {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.5em;
+}
+
+@media (max-width: 550px) {
+  h1 {
+    margin-bottom: 1rem;
+  }
+}
+
+input {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em 0 36px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid var(--c-border-primary);
+  color: var(--c-text-action);
+  font-size: 0.875rem;
+  transition: 0.15s ease;
+  width: 70%;
+  max-width: 500px;
+  line-height: 1;
+}
+
+select {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em 0 36px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid var(--c-border-primary);
+  color: var(--c-text-action);
+  font-size: 0.875rem;
+  transition: 0.15s ease;
+  width: 100%;
+  max-width: 500px;
+  min-width: 300px;
+  line-height: 1;
+}
+
+.post--container {
+  background-color: var(--c-background-primary);
+  box-shadow: 0 3px 3px 0 rgba(#000, 0.05), 0 5px 15px 0 rgba(#000, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 5vh;
+  padding: 4vh;
+}
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.25rem 1rem 1.25rem;
+}
+
+h3 {
+  margin-left: 0.75rem;
+  font-weight: 500;
+  color: var(--c-text-secondary);
+}
+
+.project-body {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.project-footer {
+  margin-top: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--c-border-primary);
+}
+
+.team-details-main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 10px 0;
+  background-color: var(--c-background-tertiary);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.team-details {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin: 10px 0;
+  background-color: var(--c-background-tertiary);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.team-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+}

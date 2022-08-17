@@ -37,7 +37,10 @@ Story 3 Tasks:
 - add amountPaid and settlementAmount to PostInterface and FetchPostInterface as optional paramenters: y
 - Jest Test for amountPaid: y
 - trigger re-render on submission: n 
-- test locally: n 
+- test passing locally: n 
+
+Added CSS: 
+Additional time: 30mins
 
 Trade Offs: 
 
@@ -51,6 +54,7 @@ Trade Offs:
 
 Issues: 
 
-- Could not get form submission for the update of payment to work as expected. If I remove the section of code which refreshes the form inputs then the form will submit correctly, but only after pressing submit several times. I have decided to submit the test as is although I understand story 3 is not complete and there is no UX design present. I initially thought I would be able to get to story 4 and implement a basic UX design within a time of 4 hours. Not including breaks I have taken to complete personal tasks it has taken roughly 4-5 hours to get to this point. 
-- I made the mistake of having this be the first project I built after setting up a new development environment in a virtual machine on my laptop and wasted time in the early setup stage of the project resolving issues with the development environment. 
+- Could not get form submission for the update of payment to work as expected. If I remove the section of code which refreshes the form inputs then the form will submit correctly, but only after pressing submit several times. I have decided to submit the test as is although I understand story 3 is not complete and there is no UX design present. I initially thought I would be able to get to story 4 and implement a basic UX design within a time of 4 hours. Not including breaks I have taken to complete personal tasks it has taken roughly 4-5 hours to get to this point.
+- I made the mistake of having this be the first project I built after setting up a new development environment in a virtual machine on my laptop and wasted time in the early setup stage of the project resolving issues with the development environment.
+
 

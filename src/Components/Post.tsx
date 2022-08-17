@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PostInterface } from "../Interfaces";
 import { baseUrl } from "../utils/baseUrl";
-import axios from "axios"
+import axios from "axios";
 import feePaid from "../utils/feePaid";
 
 interface PaymentFormInterface {
@@ -63,14 +63,14 @@ function Post(props: PostInterface): JSX.Element {
         state: "Paid",
       });
     } else if (feeData.settlementAmount && props.feePercentage) {
-      const feeTotal = feePaid(feeData.settlementAmount, props.feePercentage)
+      const feeTotal = feePaid(feeData.settlementAmount, props.feePercentage);
       setPaymentFormData({
         settlementAmount: parseInt(feeData.settlementAmount),
         amountPaid: feeTotal,
         state: "Paid",
       });
     }
-    console.log(paymentFormData)
+    console.log(paymentFormData);
     await axios.put(baseUrl + `/posts/${props.id}`, paymentFormData);
     setFeeData({
       amountPaid: "",

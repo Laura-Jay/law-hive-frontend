@@ -1,4 +1,3 @@
-
 import PostForm from "./Components/PostForm";
 import PostList from "./Components/PostList";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import axios from "axios";
 function App(): JSX.Element {
   const [posts, setPosts] = useState<FetchPostInterface[]>([]);
   const [reload, setReload] = useState<boolean>(true);
-  const [toggleForm, setToggleForm] = useState(false)
+  const [toggleForm, setToggleForm] = useState(false);
 
   useEffect(() => {
     const url = baseUrl + "/posts";
@@ -22,9 +21,11 @@ function App(): JSX.Element {
 
   return (
     <>
-      <button onClick={(e) => setToggleForm((prev) => !prev) }>Create Job Post</button>
+      <button onClick={(e) => setToggleForm((prev) => !prev)}>
+        Create Job Post
+      </button>
       <PostList posts={posts} />
-      { toggleForm && <PostForm triggerReload={setReload} reload={reload} />}
+      {toggleForm && <PostForm triggerReload={setReload} reload={reload} />}
     </>
   );
 }

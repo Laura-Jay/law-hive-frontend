@@ -1,4 +1,4 @@
-import feePaid  from "./feePaid";
+import feePaid from "./feePaid";
 
 test("feePaid returns the amountPaid from the settlementAmount and feePercentage", () => {
   expect(feePaid("400", 0.3)).toBe(120);

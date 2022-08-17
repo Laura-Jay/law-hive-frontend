@@ -1,8 +1,8 @@
-import { PostInterface } from "../Interfaces";
+import { FetchPostInterface } from "../Interfaces";
 import Post from "./Post";
 
 interface PostListProps {
-  posts: PostInterface[];
+  posts: FetchPostInterface[];
 }
 
 function PostList(props: PostListProps): JSX.Element {
@@ -12,8 +12,11 @@ function PostList(props: PostListProps): JSX.Element {
       id={post.id}
       title={post.title}
       description={post.description}
+      feeStructure={post.feestructure}
+      feePercentage={post.feepercentage}
+      feeAmount={post.feeamount}
       state={post.state}
-      creationDate={post.creationDate}
+      creationDate={post.creationdate}
     />
   ));
 

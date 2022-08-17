@@ -60,7 +60,7 @@ export function PostForm(props: PostFormProps): JSX.Element {
       (formData.feeStructure && formData.feePercentage) ||
       (formData.feeStructure && formData.feeAmount)
     ) {
-      console.log(formData)
+      console.log(formData);
       await axios.post(baseUrl + "/posts", formData);
       setFormData({
         title: "",
@@ -140,8 +140,8 @@ export function PostForm(props: PostFormProps): JSX.Element {
               </label>
               <br />
             </div>
-          ) }
-          { feeType === "fixedFee" && (
+          )}
+          {feeType === "fixedFee" && (
             <div>
               <label>
                 Fee Amount (£):

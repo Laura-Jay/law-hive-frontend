@@ -9,7 +9,6 @@ export interface FetchPostInterface {
   creationdate: Date;
 }
 
-
 export interface PostInterface {
   id: number;
   title: string;

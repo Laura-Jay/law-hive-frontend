@@ -19,7 +19,6 @@ function App(): JSX.Element {
     fetchPosts();
   }, [reload]);
 
-
   return (
     <>
       <h1>{greet("World")}</h1>;

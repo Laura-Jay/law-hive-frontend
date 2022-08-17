@@ -3,10 +3,10 @@ export interface FetchPostInterface {
   title: string;
   description: string;
   feestructure: string;
-  feepercentage?: number;
-  settlementAmount?: number;
-  feeamount?: number;
-  amountPaid?: number;
+  feepercentage: number;
+  settlementamount: number;
+  feeamount: number;
+  amountpaid: number;
   state: "Started" | "Paid";
   creationdate: Date;
 }
@@ -16,10 +16,10 @@ export interface PostInterface {
   title: string;
   description: string;
   feeStructure: string;
-  feePercentage?: number;
-  settlementAmount?: number;
-  feeAmount?: number;
-  amountPaid?: number;
+  feePercentage: number;
+  settlementAmount: number;
+  feeAmount: number;
+  amountPaid: number;
   state: "Started" | "Paid";
   creationDate: Date;
 }

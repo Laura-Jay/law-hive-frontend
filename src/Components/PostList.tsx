@@ -15,6 +15,8 @@ function PostList(props: PostListProps): JSX.Element {
       feeStructure={post.feestructure}
       feePercentage={post.feepercentage}
       feeAmount={post.feeamount}
+      settlementAmount={post.settlementamount}
+      amountPaid={post.amountpaid}
       state={post.state}
       creationDate={post.creationdate}
     />

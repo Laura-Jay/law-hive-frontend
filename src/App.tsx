@@ -24,8 +24,8 @@ function App(): JSX.Element {
       <button onClick={(e) => setToggleForm((prev) => !prev)}>
         Create Job Post
       </button>
-      <PostList posts={posts} />
       {toggleForm && <PostForm triggerReload={setReload} reload={reload} />}
+      <PostList posts={posts} />
     </>
   );
 }

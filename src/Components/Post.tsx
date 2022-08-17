@@ -7,11 +7,11 @@ import feePaid from "../utils/feePaid";
 interface PaymentFormInterface {
   settlementAmount?: string | number;
   amountPaid: string | number;
-  state?: string;
+  state: string;
 }
 
 interface FeeDataInterface {
-  settlementAmount?: string;
+  settlementAmount: string;
   amountPaid: string;
 }
 
@@ -22,17 +22,20 @@ function Post(props: PostInterface): JSX.Element {
     settlementAmount: "",
     amountPaid: "",
   });
+  //Seperating inputed data from submitted data to allow maintainence of a single source of truth without showing the user amounts initialised at zero
   const [paymentFormData, setPaymentFormData] = useState<PaymentFormInterface>({
     amountPaid: 0,
     state: props.state,
   });
 
+  //converts fee proportion to a percentage for UI
   let feePercentageString;
   if (props.feePercentage) {
     feePercentageString = props.feePercentage * 100;
     feePercentageString = feePercentageString.toString() + "%";
   }
 
+  //button to show/hide payment form, clears feeData onClick of cancel
   function handleClick() {
     if (toggleButton) {
       setToggleButton(false);
@@ -47,6 +50,7 @@ function Post(props: PostInterface): JSX.Element {
     }
   }
 
+  //updates feeData values on user input
   function handleFeeAmountChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFeeData((previous) => {
@@ -54,6 +58,7 @@ function Post(props: PostInterface): JSX.Element {
     });
   }
 
+  //submit payment form
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (props.feeStructure === "fixedFee") {
@@ -62,24 +67,17 @@ function Post(props: PostInterface): JSX.Element {
         amountPaid: parseInt(feeData.amountPaid),
         state: "Paid",
       });
-    } else if (feeData.settlementAmount && props.feePercentage) {
+      await axios.put(baseUrl + `/posts/${props.id}`, paymentFormData);
+    } else if (props.feeStructure === "noWinNoFee") {
       const feeTotal = feePaid(feeData.settlementAmount, props.feePercentage);
       setPaymentFormData({
         settlementAmount: parseInt(feeData.settlementAmount),
         amountPaid: feeTotal,
         state: "Paid",
       });
+      await axios.put(baseUrl + `/posts/${props.id}`, paymentFormData);
     }
-    console.log(paymentFormData);
-    await axios.put(baseUrl + `/posts/${props.id}`, paymentFormData);
-    setFeeData({
-      amountPaid: "",
-      settlementAmount: "",
-    });
-    setPaymentFormData({
-      amountPaid: 0,
-      state: props.state,
-    });
+    // setToggleForm(false)
   }
 
   return (
@@ -99,7 +97,7 @@ function Post(props: PostInterface): JSX.Element {
               <p>Fee Percentage: {feePercentageString}</p>
             </div>
           )}
-
+          <p>Amount Paid: £{props.amountPaid}</p>
           <p>State: {props.state}</p>
         </div>
 

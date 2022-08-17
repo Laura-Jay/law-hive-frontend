@@ -24,9 +24,12 @@ function App(): JSX.Element {
     <div className="responsive-wrapper">
       <h1>Current Job Postings</h1>
       <div className="button-bar">
-      <button className="button-add" onClick={(e) => setToggleForm((prev) => !prev)}>
-        Create Job Post
-      </button>
+        <button
+          className="button-add"
+          onClick={(e) => setToggleForm((prev) => !prev)}
+        >
+          Create Job Post
+        </button>
       </div>
       {toggleForm && <PostForm triggerReload={setReload} reload={reload} />}
       <PostList posts={posts} />

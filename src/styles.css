@@ -49,9 +49,9 @@ button {
 }
 
 .button-add {
-margin-bottom: 5vh;
-margin-top:5vh;
-width: 60%;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  width: 60%;
 }
 
 button:focus {
@@ -65,9 +65,9 @@ button:hover {
 }
 
 .button-bar {
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 h1 {
